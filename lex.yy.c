@@ -396,10 +396,10 @@ static char *yy_last_accepting_cpos;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "pascaltoy.lex"
+#line 1 "modelo/pascaltoy.lex"
 #define INITIAL 0
 /* Scanner para uma linguagem Pascal simplificada */
-#line 6 "pascaltoy.lex"
+#line 6 "modelo/pascaltoy.lex"
 
 #include <math.h>
 
@@ -554,7 +554,7 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 16 "pascaltoy.lex"
+#line 16 "modelo/pascaltoy.lex"
 
 
 #line 561 "lex.yy.c"
@@ -642,48 +642,48 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 18 "pascaltoy.lex"
+#line 18 "modelo/pascaltoy.lex"
 { printf("Numero inteiro encontrado: %s (%d)\n", yytext, atoi(yytext));}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 20 "pascaltoy.lex"
+#line 20 "modelo/pascaltoy.lex"
 {printf("Numero float encontrado: %s (%f)\n", yytext, atof(yytext));}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 22 "pascaltoy.lex"
+#line 22 "modelo/pascaltoy.lex"
 {
 		printf("Palavra reservada encontrada: %s\n ", yytext);}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 25 "pascaltoy.lex"
+#line 25 "modelo/pascaltoy.lex"
 {printf("Identificador encontrado: %s\n", yytext);}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 27 "pascaltoy.lex"
+#line 27 "modelo/pascaltoy.lex"
 {printf("Operador encontrado: %s\n", yytext);}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 29 "pascaltoy.lex"
+#line 29 "modelo/pascaltoy.lex"
 
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 31 "pascaltoy.lex"
+#line 31 "modelo/pascaltoy.lex"
 
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 33 "pascaltoy.lex"
+#line 33 "modelo/pascaltoy.lex"
 printf("Caractere nao reconhecido: %s\n", yytext);
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 35 "pascaltoy.lex"
+#line 35 "modelo/pascaltoy.lex"
 ECHO;
 	YY_BREAK
 #line 690 "lex.yy.c"
@@ -1572,7 +1572,7 @@ int main()
 	return 0;
 	}
 #endif
-#line 35 "pascaltoy.lex"
+#line 35 "modelo/pascaltoy.lex"
 
 
 int main(int argc, char *argv[]){
