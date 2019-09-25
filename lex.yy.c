@@ -451,8 +451,13 @@ char *yytext;
 #line 5 "TrabalhoGA\\trabalhoLex.lex"
 
 #include <math.h>
+#include<stdio.h>
+#include<conio.h>
+#include <string.h>
 
-#line 456 "lex.yy.c"
+    int in, t;
+	char array[][128] = {};
+#line 461 "lex.yy.c"
 
 /* Macros after this point can all be overridden by user definitions in
  * section 1.
@@ -603,14 +608,14 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
 
-#line 16 "TrabalhoGA\\trabalhoLex.lex"
+#line 21 "TrabalhoGA\\trabalhoLex.lex"
 
 
 
 
 	//COMENTARIOS 
 
-#line 614 "lex.yy.c"
+#line 619 "lex.yy.c"
 
 	if ( yy_init )
 		{
@@ -695,7 +700,7 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 22 "TrabalhoGA\\trabalhoLex.lex"
+#line 27 "TrabalhoGA\\trabalhoLex.lex"
 {printf("COMMENTARIOS -> %s\n", yytext);}
 	YY_BREAK
 
@@ -703,7 +708,7 @@ YY_RULE_SETUP
 
 case 2:
 YY_RULE_SETUP
-#line 27 "TrabalhoGA\\trabalhoLex.lex"
+#line 32 "TrabalhoGA\\trabalhoLex.lex"
 { printf("[string_literal, %s]\n", yytext);}
 	YY_BREAK
 
@@ -711,22 +716,22 @@ YY_RULE_SETUP
 
 case 3:
 YY_RULE_SETUP
-#line 32 "TrabalhoGA\\trabalhoLex.lex"
+#line 37 "TrabalhoGA\\trabalhoLex.lex"
 {printf("[logic_op, %s]\n", yytext);}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 33 "TrabalhoGA\\trabalhoLex.lex"
+#line 38 "TrabalhoGA\\trabalhoLex.lex"
 {printf("[logic_op, %s]\n", yytext);}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 34 "TrabalhoGA\\trabalhoLex.lex"
+#line 39 "TrabalhoGA\\trabalhoLex.lex"
 {printf("[logic_op, %s]\n", yytext);}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 35 "TrabalhoGA\\trabalhoLex.lex"
+#line 40 "TrabalhoGA\\trabalhoLex.lex"
 {printf("[logic_op, %s]\n", yytext);}
 	YY_BREAK
 
@@ -734,37 +739,37 @@ YY_RULE_SETUP
 
 case 7:
 YY_RULE_SETUP
-#line 40 "TrabalhoGA\\trabalhoLex.lex"
+#line 45 "TrabalhoGA\\trabalhoLex.lex"
 {printf("[equal_op, %s]\n", yytext);}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 41 "TrabalhoGA\\trabalhoLex.lex"
+#line 46 "TrabalhoGA\\trabalhoLex.lex"
 {printf("[l_paren, %s]\n", yytext);}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 42 "TrabalhoGA\\trabalhoLex.lex"
+#line 47 "TrabalhoGA\\trabalhoLex.lex"
 {printf("[r_paren, %s]\n", yytext);}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 43 "TrabalhoGA\\trabalhoLex.lex"
+#line 48 "TrabalhoGA\\trabalhoLex.lex"
 {printf("[l_bracket, %s]\n", yytext);}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 44 "TrabalhoGA\\trabalhoLex.lex"
+#line 49 "TrabalhoGA\\trabalhoLex.lex"
 {printf("[r_bracket, %s]\n", yytext);}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 45 "TrabalhoGA\\trabalhoLex.lex"
+#line 50 "TrabalhoGA\\trabalhoLex.lex"
 {printf("[comma, %s]\n", yytext);}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 46 "TrabalhoGA\\trabalhoLex.lex"
+#line 51 "TrabalhoGA\\trabalhoLex.lex"
 {printf("[semicolon, %s]\n", yytext);}
 	YY_BREAK
 
@@ -772,7 +777,7 @@ YY_RULE_SETUP
 
 case 14:
 YY_RULE_SETUP
-#line 51 "TrabalhoGA\\trabalhoLex.lex"
+#line 56 "TrabalhoGA\\trabalhoLex.lex"
 {printf("[num, %f]\n",atof(yytext));}
 	YY_BREAK
 
@@ -780,7 +785,7 @@ YY_RULE_SETUP
 
 case 15:
 YY_RULE_SETUP
-#line 56 "TrabalhoGA\\trabalhoLex.lex"
+#line 61 "TrabalhoGA\\trabalhoLex.lex"
 { printf("[num, %d]\n", atoi(yytext));}
 	YY_BREAK
 
@@ -788,26 +793,48 @@ YY_RULE_SETUP
 
 case 16:
 YY_RULE_SETUP
-#line 61 "TrabalhoGA\\trabalhoLex.lex"
+#line 66 "TrabalhoGA\\trabalhoLex.lex"
 {
 	printf("[reserved_word, %s]\n ", yytext);
 }
 	YY_BREAK
 
 	//IDENTIFICADORES  (fazer aqui array para buscar id que ja exista)
-	int in = 1;
+	
 
 case 17:
 YY_RULE_SETUP
-#line 69 "TrabalhoGA\\trabalhoLex.lex"
-{printf("[id (%s), %d]\n", yytext,in++);}
+#line 74 "TrabalhoGA\\trabalhoLex.lex"
+{
+   /* Inicializando uma matriz sem tamanho definido */
+   //char array[][128] = {"Nome1d"};
+   //strcpy(array[5], "ARROZ");
+   int len = sizeof(array)/sizeof(*array);
+   t = 0;
+   int j;
+   for(j=0; j < in; j++){
+       //printf("[id:%d] %s\n", j,array[j]); 
+	   //printf("[id:%d] %s\n", j,array[j]);
+	   if(strcmp(array[j], yytext) == 0){
+		   t = 1;
+		   //printf("AQUI %s\n",array[j]); 
+		   break;
+	   }
+   }
+   if(t == 0){
+	 strcpy(array[in], yytext);
+	 j = in;
+	 ++in;
+   }
+	printf("[id (%s), %d]\n", yytext,j);  
+}
 	YY_BREAK
 
 	//OPERADORES aritimeticos 
 
 case 18:
 YY_RULE_SETUP
-#line 74 "TrabalhoGA\\trabalhoLex.lex"
+#line 101 "TrabalhoGA\\trabalhoLex.lex"
 {printf("[arith_op, %s]\n", yytext);}
 	YY_BREAK
 
@@ -815,30 +842,30 @@ YY_RULE_SETUP
 
 case 19:
 YY_RULE_SETUP
-#line 79 "TrabalhoGA\\trabalhoLex.lex"
+#line 106 "TrabalhoGA\\trabalhoLex.lex"
 {printf("[relational_op, %s]\n", yytext);}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 81 "TrabalhoGA\\trabalhoLex.lex"
+#line 108 "TrabalhoGA\\trabalhoLex.lex"
 
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 83 "TrabalhoGA\\trabalhoLex.lex"
+#line 110 "TrabalhoGA\\trabalhoLex.lex"
 
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 85 "TrabalhoGA\\trabalhoLex.lex"
+#line 112 "TrabalhoGA\\trabalhoLex.lex"
 printf("Caractere nao reconhecido: %s\n", yytext);
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 87 "TrabalhoGA\\trabalhoLex.lex"
+#line 114 "TrabalhoGA\\trabalhoLex.lex"
 ECHO;
 	YY_BREAK
-#line 842 "lex.yy.c"
+#line 869 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1724,7 +1751,7 @@ int main()
 	return 0;
 	}
 #endif
-#line 87 "TrabalhoGA\\trabalhoLex.lex"
+#line 114 "TrabalhoGA\\trabalhoLex.lex"
 
 
 int main(int argc, char *argv[]){

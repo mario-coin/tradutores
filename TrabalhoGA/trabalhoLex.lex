@@ -4,7 +4,12 @@
 %{
 
 #include <math.h>
+#include<stdio.h>
+#include<conio.h>
+#include <string.h>
 
+    int in, t;
+	char array[][128] = {};
 %}
 
 
@@ -64,9 +69,31 @@ if|void|float|printf|int|string|scanf|if|return|NULL|for|{INCLUDE}	{
 
 %{
 	//IDENTIFICADORES  (fazer aqui array para buscar id que ja exista)
-	int in = 1;
+	
 %}
-{ID} {printf("[id (%s), %d]\n", yytext,in++);}
+{ID} {
+   /* Inicializando uma matriz sem tamanho definido */
+   //char array[][128] = {"Nome1d"};
+   //strcpy(array[5], "ARROZ");
+   int len = sizeof(array)/sizeof(*array);
+   t = 0;
+   int j;
+   for(j=0; j < in; j++){
+       //printf("[id:%d] %s\n", j,array[j]); 
+	   //printf("[id:%d] %s\n", j,array[j]);
+	   if(strcmp(array[j], yytext) == 0){
+		   t = 1;
+		   //printf("AQUI %s\n",array[j]); 
+		   break;
+	   }
+   }
+   if(t == 0){
+	 strcpy(array[in], yytext);
+	 j = in;
+	 ++in;
+   }
+	printf("[id (%s), %d]\n", yytext,j);  
+}
 
 %{
 	//OPERADORES aritimeticos 
