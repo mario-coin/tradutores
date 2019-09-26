@@ -5,11 +5,11 @@
 
 #include <math.h>
 #include<stdio.h>
-#include<conio.h>
+//#include<conio.h>
 #include <string.h>
 
     int in, t;
-	char array[][128] = {};
+	char array[][50] = {};
 %}
 
 
@@ -24,7 +24,7 @@ STRING ((\")(.)*(\")|(')(.)*('))
 %{
 	//COMENTARIOS 
 %}
-{COMMENTS} {printf("COMMENTARIOS -> %s\n", yytext);}
+{COMMENTS} {}
 
 %{
 	//STRING 
@@ -73,17 +73,14 @@ if|void|float|printf|int|string|scanf|if|return|NULL|for|{INCLUDE}	{
 %}
 {ID} {
    /* Inicializando uma matriz sem tamanho definido */
-   //char array[][128] = {"Nome1d"};
-   //strcpy(array[5], "ARROZ");
-   int len = sizeof(array)/sizeof(*array);
    t = 0;
    int j;
+   printf("A");
    for(j=0; j < in; j++){
-       //printf("[id:%d] %s\n", j,array[j]); 
-	   //printf("[id:%d] %s\n", j,array[j]);
+	   printf("B");
 	   if(strcmp(array[j], yytext) == 0){
 		   t = 1;
-		   //printf("AQUI %s\n",array[j]); 
+		   printf("C");
 		   break;
 	   }
    }

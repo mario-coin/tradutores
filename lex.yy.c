@@ -452,11 +452,11 @@ char *yytext;
 
 #include <math.h>
 #include<stdio.h>
-#include<conio.h>
+//#include<conio.h>
 #include <string.h>
 
     int in, t;
-	char array[][128] = {};
+	char array[][50] = {};
 #line 461 "lex.yy.c"
 
 /* Macros after this point can all be overridden by user definitions in
@@ -701,7 +701,7 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 YY_RULE_SETUP
 #line 27 "TrabalhoGA\\trabalhoLex.lex"
-{printf("COMMENTARIOS -> %s\n", yytext);}
+{}
 	YY_BREAK
 
 	//STRING 
@@ -807,17 +807,14 @@ YY_RULE_SETUP
 #line 74 "TrabalhoGA\\trabalhoLex.lex"
 {
    /* Inicializando uma matriz sem tamanho definido */
-   //char array[][128] = {"Nome1d"};
-   //strcpy(array[5], "ARROZ");
-   int len = sizeof(array)/sizeof(*array);
    t = 0;
    int j;
+   printf("A");
    for(j=0; j < in; j++){
-       //printf("[id:%d] %s\n", j,array[j]); 
-	   //printf("[id:%d] %s\n", j,array[j]);
+	   printf("B");
 	   if(strcmp(array[j], yytext) == 0){
 		   t = 1;
-		   //printf("AQUI %s\n",array[j]); 
+		   printf("C");
 		   break;
 	   }
    }
@@ -834,7 +831,7 @@ YY_RULE_SETUP
 
 case 18:
 YY_RULE_SETUP
-#line 101 "TrabalhoGA\\trabalhoLex.lex"
+#line 98 "TrabalhoGA\\trabalhoLex.lex"
 {printf("[arith_op, %s]\n", yytext);}
 	YY_BREAK
 
@@ -842,30 +839,30 @@ YY_RULE_SETUP
 
 case 19:
 YY_RULE_SETUP
-#line 106 "TrabalhoGA\\trabalhoLex.lex"
+#line 103 "TrabalhoGA\\trabalhoLex.lex"
 {printf("[relational_op, %s]\n", yytext);}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 108 "TrabalhoGA\\trabalhoLex.lex"
+#line 105 "TrabalhoGA\\trabalhoLex.lex"
 
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 110 "TrabalhoGA\\trabalhoLex.lex"
+#line 107 "TrabalhoGA\\trabalhoLex.lex"
 
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 112 "TrabalhoGA\\trabalhoLex.lex"
+#line 109 "TrabalhoGA\\trabalhoLex.lex"
 printf("Caractere nao reconhecido: %s\n", yytext);
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 114 "TrabalhoGA\\trabalhoLex.lex"
+#line 111 "TrabalhoGA\\trabalhoLex.lex"
 ECHO;
 	YY_BREAK
-#line 869 "lex.yy.c"
+#line 866 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1751,7 +1748,7 @@ int main()
 	return 0;
 	}
 #endif
-#line 114 "TrabalhoGA\\trabalhoLex.lex"
+#line 111 "TrabalhoGA\\trabalhoLex.lex"
 
 
 int main(int argc, char *argv[]){
