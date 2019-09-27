@@ -11,12 +11,12 @@
 	char array[50][50] = {};
 %}
 
-
 DIGIT	[0-9]
 ID	[aA-zZ][aA-zZ0-9]*
 INCLUDE  ((#include)([ ])*(<)(\w|.)*(>))
 COMMENTS ((\/\*)([^(\*\/)])+(\*\/))|((\/\/)(.)*(\n))
 STRING ((\")(.)*(\")|(')(.)*('))
+
 %%
 
 
@@ -49,8 +49,6 @@ STRING ((\")(.)*(\")|(')(.)*('))
 "}" {printf("[r_bracket, %s]\n", yytext);}
 "," {printf("[comma, %s]\n", yytext);}
 ";" {printf("[semicolon, %s]\n", yytext);}
-"[]" {  printf("[l_squarebracket, %s]\n", "[");
-		printf("[r_squarebracket, %s]\n", "]");}
 "[" {printf("[l_squarebracket, %s]\n", yytext);}
 "]" {printf("[r_squarebracket, %s]\n", yytext);}
 
@@ -85,13 +83,13 @@ if|void|float|printf|int|string|scanf|if|return|NULL|for|{INCLUDE}	{
 		   break;
 	   }
    }
-   int temp;
+
    if(t == 0){
 	 strcpy(array[in], yytext);
-	 temp = in;
+	 j = in;
 	 ++in;
    }
-	printf("[id (%s), %d]\n", yytext,temp);
+	printf("[id (%s), %d]\n", yytext,j);
 }
 
 %{
