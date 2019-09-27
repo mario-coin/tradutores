@@ -5,11 +5,10 @@
 
 #include <math.h>
 #include<stdio.h>
-//#include<conio.h>
 #include <string.h>
 
-    int in, t;
-	char array[][50] = {};
+    int in, t, j;
+	char array[50][50] = {};
 %}
 
 
@@ -29,15 +28,16 @@ STRING ((\")(.)*(\")|(')(.)*('))
 %{
 	//STRING 
 %}
-{STRING}+ { printf("[string_literal, %s]\n", yytext);}
+{STRING} { printf("[string_literal, %s]\n", yytext);}
 
 %{
 	//OPERADORES LOGICOS 
+	//"|" {printf("[logic_op, %s]\n", yytext);}
+	//"&" {printf("[logic_op, %s]\n", yytext);}
 %}
 "||" {printf("[logic_op, %s]\n", yytext);}
 "&&" {printf("[logic_op, %s]\n", yytext);}
-"|" {printf("[logic_op, %s]\n", yytext);}
-"&" {printf("[logic_op, %s]\n", yytext);}
+
 
 %{
 	//DEMAIS SINALIZADORES 
@@ -49,6 +49,10 @@ STRING ((\")(.)*(\")|(')(.)*('))
 "}" {printf("[r_bracket, %s]\n", yytext);}
 "," {printf("[comma, %s]\n", yytext);}
 ";" {printf("[semicolon, %s]\n", yytext);}
+"[]" {  printf("[l_squarebracket, %s]\n", "[");
+		printf("[r_squarebracket, %s]\n", "]");}
+"[" {printf("[l_squarebracket, %s]\n", yytext);}
+"]" {printf("[r_squarebracket, %s]\n", yytext);}
 
 %{
 	//FLOAT 
@@ -64,7 +68,7 @@ STRING ((\")(.)*(\")|(')(.)*('))
 	//PALAVRAS RESERVADAS 
 %}
 if|void|float|printf|int|string|scanf|if|return|NULL|for|{INCLUDE}	{
-	printf("[reserved_word, %s]\n ", yytext);
+	printf("[reserved_word, %s]\n", yytext);
 }
 
 %{
@@ -73,23 +77,21 @@ if|void|float|printf|int|string|scanf|if|return|NULL|for|{INCLUDE}	{
 %}
 {ID} {
    /* Inicializando uma matriz sem tamanho definido */
-   t = 0;
-   int j;
-   printf("A");
+    t = 0;
+    j = 0;
    for(j=0; j < in; j++){
-	   printf("B");
 	   if(strcmp(array[j], yytext) == 0){
 		   t = 1;
-		   printf("C");
 		   break;
 	   }
    }
+   int temp;
    if(t == 0){
 	 strcpy(array[in], yytext);
-	 j = in;
+	 temp = in;
 	 ++in;
    }
-	printf("[id (%s), %d]\n", yytext,j);  
+	printf("[id (%s), %d]\n", yytext,temp);
 }
 
 %{
